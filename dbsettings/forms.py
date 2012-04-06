@@ -9,7 +9,7 @@ from dbsettings.loading import get_setting_storage
 re_field_name = re.compile(r'^(.+)__(.*)__(.+)$')
 
 class SettingsEditor(forms.BaseForm):
-    "Base editor, from which customized forms are created"
+    """Base editor, from which customized forms are created"""
 
     def __iter__(self):
         for field in super(SettingsEditor, self).__iter__():
@@ -20,7 +20,7 @@ class SettingsEditor(forms.BaseForm):
         return self.specialize(field)
 
     def specialize(self, field):
-        "Wrapper to add module_name and class_name for regrouping"
+        """Wrapper to add module_name and class_name for regrouping"""
         field.label = capfirst(field.label)
         module_name, class_name, x = re_field_name.match(field.name).groups()
 
@@ -36,7 +36,7 @@ class SettingsEditor(forms.BaseForm):
         return field
 
 def customized_editor(user, settings):
-    "Customize the setting editor based on the current user and setting list"
+    """Customize the setting editor based on the current user and setting list"""
     base_fields = SortedDict()
     for setting in settings:
         perm = '%s.can_edit_%s_settings' % (

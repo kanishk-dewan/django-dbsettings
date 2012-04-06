@@ -9,7 +9,7 @@ __all__ = ['get_all_settings', 'get_setting', 'get_setting_storage',
     'register_setting', 'set_setting_value']
 
 class SettingDict(SortedDict):
-    "Sorted dict that has a bit more list-type functionality"
+    """Sorted dict that has a bit more list-type functionality"""
 
     def __iter__(self):
         return self.itervalues()
