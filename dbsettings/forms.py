@@ -43,7 +43,8 @@ def customized_editor(user, settings):
             setting.module_name.split('.')[-2],
             setting.class_name.lower()
         )
-        if user.has_perm(perm):
+        # dbsettings.change_setting permission overrides any/all dbsettings group-specific perms
+        if user.has_perm(perm) or user.has_perm("dbsettings.change_setting"):
             # Add the field to the customized field list
             storage = get_setting_storage(*setting.key)
             kwargs = {
