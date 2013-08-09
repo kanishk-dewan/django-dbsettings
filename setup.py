@@ -17,14 +17,13 @@ setup(
     long_description=open('README.rst').read(),
     author='Samuel Cormier-Iijima',
     author_email='sciyoshi@gmail.com',
-    maintainer='Jacek Tomaszewski',
-    maintainer_email='jacek.tomek@gmail.com',
-    url='http://github.com/zlorf/django-dbsettings',
+    maintainer='Helber Maciel Guerra',
+    maintainer_email='helbermg@gmail.com',
+    url='http://github.com/helber/django-dbsettings',
     packages=find_packages(),
     include_package_data=True,
     license='BSD',
     install_requires=(
-        'PIL',
     ),
     classifiers=[
         'Development Status :: 4 - Beta',
