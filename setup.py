@@ -19,7 +19,7 @@ setup(
     author_email='sciyoshi@gmail.com',
     maintainer='Helber Maciel Guerra',
     maintainer_email='helbermg@gmail.com',
-    url='http://github.com/helber/django-dbsettings',
+    url='http://github.com/sciyoshi/django-dbsettings',
     packages=find_packages(),
     include_package_data=True,
     license='BSD',
