@@ -27,7 +27,10 @@ class SettingsEditor(forms.BaseForm):
         field.label = capfirst(field.label)
         module_name, class_name, _ = RE_FIELD_NAME.match(field.name).groups()
 
-        app_label = module_name.split('.')[-2]
+        if len(module_name.split('.')) > 1:
+            app_label = module_name.split('.')[-2]
+        else:
+            app_label = module_name.split('.')[-1]
         field.module_name = app_label
 
         if class_name:
@@ -45,8 +48,12 @@ def customized_editor(user, settings):
     base_fields = SortedDict()
     verbose_names = {}
     for setting in settings:
+        if len(setting.module_name.split('.')) > 1:
+            app_name = setting.module_name.split('.')[-2]
+        else:
+            app_name = setting.module_name.split('.')[-1]
         perm = '%s.can_edit_%s_settings' % (
-            setting.module_name.split('.')[-2],
+            app_name,
             setting.class_name.lower()
         )
         # dbsettings.change_setting permission overrides any/all dbsettings group-specific perms
